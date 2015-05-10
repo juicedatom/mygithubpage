@@ -1,7 +1,7 @@
 //This is the first time i've ever done javascript,
 //please don't hate :/
 window.addEventListener("load", function() {
-	var names = ["Gets", " shit", " done."];
+	var names = ["Gets", " shit", " done", "."];
 	var cur = 0;
 	var str = "";
     var f = document.getElementById('Foo');
@@ -15,7 +15,7 @@ window.addEventListener("load", function() {
         f.innerHTML= str;
         cur = cur + 1;
 
-        if (idx == 2) {
+        if (idx == names.length-1) {
         	clearInterval(timerId);
         }
     }, 2000);
