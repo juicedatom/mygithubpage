@@ -48,3 +48,10 @@ h1 {
 body .contact-bar .container {
 	padding-top: 100px;
 }
+
+hr {
+  background: transparent url(images/hr.gif) center center no-repeat;
+  height: 21px;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
