@@ -1,7 +1,3 @@
-h3 {
-	text:"Josh figured it out!";
-}
-
 body {
 	background-color: lightblue;
 	padding-top: 45px;
@@ -62,10 +58,6 @@ body .contact-header .container{
 	font-family: Impact, Charcoal, sans-serif;
 	color: black;
 	text-align: center;
-}
-
-body .contact-header {
-	/*padding-top: 50px;*/
 }
 
 hr {
