@@ -4,18 +4,25 @@ h3 {
 
 body {
 	background-color: lightblue;
-}
-
-body .topbar {
-	padding-bottom: 20px;
+	padding-top: 45px;
 }
 
 body .robot-stuff {
 	margin:auto;
 }
 
+.nav {
+	background-color: lightblue;
+}
+
 h1 {
 	font-family: Impact, Charcoal, sans-serif;
+}
+
+.vert-center div > div
+{
+	display: flex;
+	justify-content: center;
 }
 
 .contact-bar img {
@@ -53,12 +60,12 @@ h1 {
 
 body .contact-header .container{
 	font-family: Impact, Charcoal, sans-serif;
-	color: navy;
+	color: black;
 	text-align: center;
 }
 
 body .contact-header {
-	padding-top: 50px;
+	/*padding-top: 50px;*/
 }
 
 hr {
