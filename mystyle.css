@@ -4,6 +4,10 @@ body {
 	background-color: lightblue;
 }
 
+body .topbar {
+	padding-bottom: 20px;
+}
+
 body .jumbotron .container {
 	padding-left: 0px;
 }
