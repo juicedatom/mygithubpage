@@ -14,6 +14,10 @@ body .jumbotron .container {
 	padding-left: 0px;
 }
 
+body .robot-stuff {
+	margin:auto;
+}
+
 h1 {
 	font-family: Impact, Charcoal, sans-serif;
 }
@@ -49,10 +53,6 @@ h1 {
     -ms-transform:scale(1.25); /* IE 9 */
     -o-transform:scale(1.25); /* Opera */
      transform:scale(1.25);
-}
-
-body .contact-bar .container {
-	padding-top: 0px;
 }
 
 body .contact-header .container{
