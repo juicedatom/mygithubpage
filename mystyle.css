@@ -10,10 +10,6 @@ body .topbar {
 	padding-bottom: 20px;
 }
 
-body .jumbotron .container {
-	padding-left: 0px;
-}
-
 body .robot-stuff {
 	margin:auto;
 }
@@ -57,7 +53,7 @@ h1 {
 
 body .contact-header .container{
 	font-family: Impact, Charcoal, sans-serif;
-	color: white;
+	color: navy;
 	text-align: center;
 }
 
