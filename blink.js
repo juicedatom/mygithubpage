@@ -18,5 +18,5 @@ window.addEventListener("load", function() {
         if (idx == names.length-1) {
         	clearInterval(timerId);
         }
-    }, 2000);
+    }, 500);
 }, false);
