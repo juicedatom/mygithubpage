@@ -11,6 +11,8 @@ window.addEventListener("load", function() {
     // Grab the element I wish to flash.
     var f = document.getElementById('Foo');
 
+    var orig = f.innerHTML
+
     // Create the interval timer.
     var timerId = setInterval(function() {
 
@@ -22,7 +24,7 @@ window.addEventListener("load", function() {
 
         // Perform the concatenation.
     	str = str.concat(names[idx]);
-        f.innerHTML= str;
+        f.innerHTML= orig + str;
         cur = cur + 1;
 
         // Clear the timer when we're done.
