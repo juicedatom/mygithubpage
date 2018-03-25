@@ -59,3 +59,8 @@ user@computer:~/$ echo 'Hello World'
 {% highlight python %}
 >>> print('Hello World')
 {% endhighlight %}
+
+# Brainfuck
+{% highlight brainfuck %}
+++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++.>+.+++++++..+++.>++.<<+++++++++++++++.>.+++.------.--------.>+.>.
+{% endhighlight %}
