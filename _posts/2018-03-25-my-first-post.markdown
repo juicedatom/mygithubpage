@@ -4,7 +4,7 @@ title:  "Hello World!"
 date:   2018-03-25 14:12:12 -0400
 categories: jekyll update
 ---
-Welcome to my site, I just set this up!  I will be adding posts to here occasionally so make sure to keep an eye out.  For now, here's a quick Hello World in a couple languages.
+For my first test post I'll just write ```Hello World!``` in a bunch of different ways.
 
 # C++
 {% highlight cpp %}
