@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-<img style="float: right;" src="/josh_in_lab.jpg" border="2">
+<img style="float: right;" src="/funnyhat.jpg" border="2" width="40%">
 In 2016 I graduated with my bachelors degree in Computer Engineering from Michigan Technological University.  During my time in school, I did research in SLAM, localization, and swarm-intelligence algorithms.
 
 Besides my academics, I worked at several companies for internships and co-ops doing a variety of work.  Some of these include,
