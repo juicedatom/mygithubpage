@@ -4,6 +4,4 @@ title: Home
 enable_shit: true
 ---
 <img align="right" src="robot-icon.png">
-I'm glad you're here to pay a visit.  I'm currently an engineer working in the Autonomous Driving Space with experience everywhere from electrical hardware design to software development.  Please visit often for updates on what I'm up to and where I'm going.  If you want to connect, please use one of the links below.
-
-Right now, I work at Argo AI as a Perception Engineer both building C++ infrastructure to support algorithms and researching advanced methods image processing methods for Perception.  If you're interested in either of those things (or anything else) please don't hesitate to contact me!
+ Currently, I work as an engineer in the autonomous driving space with experience everywhere from electrical hardware design to software development.  Please visit often for updates on what I'm up to and where I'm going.  If you want to connect, use one of the links below.
