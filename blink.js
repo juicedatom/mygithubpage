@@ -9,7 +9,7 @@ function stepping_text(names, time_to_wait_ms, object_to_modify)
     var timerId = setInterval(function() {
 
         // Clear the timer when we're done.
-        if (index == names.length) {
+        if (index >= names.length) {
         	clearInterval(timerId);
             return
         }
