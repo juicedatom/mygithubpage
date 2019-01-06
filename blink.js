@@ -1,36 +1,30 @@
-// This is the first time i've ever done javascript,
-//please don't hate :/
-window.addEventListener("load", function() {
+function stepping_text(names, time_to_wait_ms, object_to_modify)
+{
+    var index = 0;
+    var appended_text = "";
 
-    // Setup variables for the timer.
-    var names = ["Gets", " shit", " done", "."];
-    var cur = 0;
-    var str = "";
-    var time_to_wait_ms = 500 
-
-    // Grab the element I wish to flash.
-    var f = document.getElementById('Foo');
-
-    var orig = f.innerHTML
+    var header = object_to_modify.innerHTML
 
     // Create the interval timer.
     var timerId = setInterval(function() {
 
-        // Everytime we iterate through the function, append another string.
-    	var idx = cur%names.length;
-    	if (idx == 0) {
-    		str = "";
-    	}
+        // Clear the timer when we're done.
+        if (index == names.length) {
+        	clearInterval(timerId);
+            return
+        }
 
         // Perform the concatenation.
-    	str = str.concat(names[idx]);
-        f.innerHTML= orig + str;
-        cur = cur + 1;
+    	appended_text = appended_text.concat(names[index]);
+        object_to_modify.innerHTML = header + appended_text;
+        index = index + 1;
 
-        // Clear the timer when we're done.
-        if (idx == names.length-1) {
-        	clearInterval(timerId);
-        }
     }, time_to_wait_ms);
+}
 
+window.addEventListener("load", function() {
+    stepping_text(
+        ["Gets", " shit", " done", "."],
+        500,
+        document.getElementById('HeaderText'))
 }, false);

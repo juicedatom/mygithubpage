@@ -7,7 +7,7 @@
     {%- assign page_paths = site.header_pages | default: default_paths -%}
     <a class="site-title" rel="author" href="{{ "/" | relative_url }}">
     {%- if page.enable_shit == true -%}
-        <div id="Foo">{{ site.title | escape }}, </div>
+        <div id="HeaderText">{{ site.title | escape }}, </div>
     {%- else -%}
         {{ site.title | escape }}, Gets shit done.
     {%- endif -%}
