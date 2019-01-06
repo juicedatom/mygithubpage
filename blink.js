@@ -3,9 +3,9 @@
 window.addEventListener("load", function() {
 
     // Setup variables for the timer.
-	var names = ["Gets", " shit", " done", "."];
-	var cur = 0;
-	var str = "";
+    var names = ["Gets", " shit", " done", "."];
+    var cur = 0;
+    var str = "";
     var time_to_wait_ms = 500 
 
     // Grab the element I wish to flash.
