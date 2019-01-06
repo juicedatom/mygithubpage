@@ -22,9 +22,12 @@ function stepping_text(names, time_to_wait_ms, object_to_modify)
     }, time_to_wait_ms);
 }
 
-window.addEventListener("load", function() {
-    stepping_text(
-        ["Gets", " shit", " done", "."],
-        500,
-        document.getElementById('HeaderText'))
-}, false);
+function load_event()
+{
+  stepping_text(
+     ["Gets", " Shit", " Done", "."],
+     500,
+     document.getElementById('HeaderText'))
+}
+
+window.addEventListener("load", load_event, false);
