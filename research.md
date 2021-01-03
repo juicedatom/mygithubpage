@@ -5,6 +5,7 @@ permalink: /research/
 ---
 
 # Selected Publications
+Hierarchical Deep Stereo Matching on High-Resolution Images
 Gengshan Yang, Joshua Manela, Michael Happold, Deva Ramanan;
 The IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2019, pp. 5515-5524
 
