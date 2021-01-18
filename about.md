@@ -14,6 +14,6 @@ Before graduating I worked at several companies for internships and co-ops doing
 * Securing Amazon.com's internal services with custom protocols
 * Working at Facebook to build and validate network-switch hardware
 
-After my degree I worked at the Uber Advanced Technology Group (ATG) developing self-driving machine learning algorithms for their self-driving Uber cars.  I currently work as a Senior Software Engineer on the Perception team at Argo AI.
+After my degree I worked at the Uber Advanced Technology Group (ATG) developing self-driving machine learning algorithms for their self-driving Uber cars.  I then moved on to being one of the founding engineers at Argo AI. Currently, I work as a Senior Software Engineer at Waymo working on perceptions systems for our autonomous truck.
 
 If you're interested more about me, you can download my [CV here](/ManelaCV.pdf).
