@@ -16,3 +16,6 @@ Estimation. ASME Journal of Dynamic Systems, Measurement and Control](https://as
 
 # Patents
 [Methods and systems for constructing map data using poisson surface reconstruction: HU Xiaoyan, M Happold, JM Manela, G Hotson - US Patent App. 16/722,641, 2021](https://patentimages.storage.googleapis.com/02/bc/ed/1bcb112e3a9b35/US20210192841A1.pdf)
+
+# Projects
+[D. Etelamaki, W. Helminen, J. Manela and J. Yauk. Railroad Wheel Contamination Detection. National University Rail Center: University Transportation Research Brief, 2016](http://www.nurailcenter.org/tech-and-pub/doc/briefs/Hump%20Sensors%20NURailResearchBrief.pdf)
