@@ -5,7 +5,7 @@ enable_shit: true
 ---
 <img style="float: right;" src="/assets/funnyhat.jpg" border="2" width="40%">
 
-In 2016, I graduated with a degree in Computer Engineering from [Michigan Technological University](https://www.mtu.edu/) after years of [robotics research](https://scholar.google.com/citations?user=E0nbCrYAAAAJ&hl=en), internships, and spending time [in nature](https://www.google.com/maps/place/Michigan+Technological+University/@47.0892921,-88.6100291,11.82z/data=!4m5!3m4!1s0x4d50c810d2807581:0x80d7ca9457d61ad5!8m2!3d47.1150259!4d-88.5452004)! Since then, I've been working as a Perception Engineer and researcher by changing the way that robots see the world.
+In 2016, I graduated with a degree in Computer Engineering from [Michigan Technological University](https://www.mtu.edu/) after years of [robotics research](https://scholar.google.com/citations?user=E0nbCrYAAAAJ&hl=en), internships, and spending time [in nature](https://www.google.com/maps/place/Michigan+Technological+University/@47.0892921,-88.6100291,11.82z/data=!4m5!3m4!1s0x4d50c810d2807581:0x80d7ca9457d61ad5!8m2!3d47.1150259!4d-88.5452004)! Since then, I've been working as an engineer and researcher  changing the way that robots see the world.
 
 
 For the next couple of paragraphs I'll give an overview on my professional career through the lens of sensor fusion.
@@ -24,7 +24,7 @@ Following college, I was part of the first intern class at [Uber ATC](https://ww
 After some time at Uber, I joined [Argo AI](https://www.argo.ai/) as one of the original employees. Getting back to my camera-lidar roots, I started there by working with our team to develop C++ onboard infrastructure for everything from out monocular object detector to low-level lidar firmware.
 
 
-I furthered my mapping work at Argo by [patenting](https://patents.google.com/patent/US11164369B2/en) a method to develop cm-level precision ground height maps using [Gaussian Processes](https://en.wikipedia.org/wiki/Gaussian_process#:~:text=In%20probability%20theory%20and%20statistics,of%20them%20is%20normally%20distributed.).
+I furthered my mapping work at Argo by working on a team which [patented](https://patents.google.com/patent/US11164369B2/en) a method to develop cm-level precision ground height maps using a [Gaussian Process](http://robotics.caltech.edu/wiki/images/8/8e/GPModelingTerrain.pdf), Poisson Surface Reconstruction, and several other hack. My role in the project was to implement the Gaussian Process piece of the pipeline using the [GPflow](https://github.com/GPflow/GPflow) package.
 
 
 I then spent a significant amount of my time working with Argo's fantastic [lidar team](https://www.forbes.com/sites/samabuelsamid/2017/10/27/argo-ai-and-ford-double-down-on-lidar-acquire-princeton-lightwave/?sh=6a1555b3410a) to develop algorithms for Argo's custom [Geiger-Mode](https://www.argo.ai/company-news/breakthrough-new-lidar-technology-gives-argo-ai-the-edge-in-autonomous-delivery-and-ride-hail-services/) lidar. Following my infra work, I was promoted and tech-lead a team of engineers to ship Argo's first deep-lidar based object detector. The detector was then deployed in five different cities simultaneously.
