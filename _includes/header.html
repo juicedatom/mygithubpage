@@ -35,7 +35,7 @@
             <a class="page-link" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
             {%- endif -%}
           {% endfor -%}
-	<a class="page-link" href="/assets/ManelaCV.pdf" target="_blank">Resume</a>
+	<a class="page-link" href="{{ site.cv_url }}" target="_blank">Resume</a>
         </div>
       </nav>
     {%- endif -%}

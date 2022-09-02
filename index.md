@@ -43,4 +43,4 @@ I currently lead the radar-trucking perception working group. The group consists
 
 
 ## In General...
-Although I've had many other jobs and wonderful experiences throughout my career, I now consider myself to be a robotics engineer with a specialization in building machine learning algorithms for custom-built sensors. Ultimately, just like doing cool stuff and always happy to chat! If you want to learn more about me please use one of the links below, or just check out my [CV](/assets/ManelaCV.pdf) for more information.
+Although I've had many other jobs and wonderful experiences throughout my career, I now consider myself to be a robotics engineer with a specialization in building machine learning algorithms for custom-built sensors. Ultimately, just like doing cool stuff and always happy to chat! If you want to learn more about me please use one of the links below, or just check out my <a class="page-link" href="{{ site.cv_url }}" target="_blank">Resume</a> for more information.
