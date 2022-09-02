@@ -3,7 +3,7 @@ layout: home
 title: Home
 enable_shit: true
 ---
-<img style="float: right;" src="/funnyhat.jpg" border="2" width="40%">
+<img style="float: right;" src="/assets/funnyhat.jpg" border="2" width="40%">
 
 In 2016, I graduated with a degree in Computer Engineering from [Michigan Technological University](https://www.mtu.edu/) after years of [robotics research](https://scholar.google.com/citations?user=E0nbCrYAAAAJ&hl=en), internships, and spending time [in nature](https://www.google.com/maps/place/Michigan+Technological+University/@47.0892921,-88.6100291,11.82z/data=!4m5!3m4!1s0x4d50c810d2807581:0x80d7ca9457d61ad5!8m2!3d47.1150259!4d-88.5452004)! Since then, I've been working as a Perception Engineer and researcher by changing the way that robots see the world.
 
@@ -43,4 +43,4 @@ I currently lead the radar-trucking perception working group. The group consists
 
 
 ## In General...
-Although I've had many other jobs and wonderful experiences throughout my career, I now consider myself to be a robotics engineer with a specialization in building machine learning algorithms for custom-built sensors. Ultimately, just like doing cool stuff and always happy to chat! If you want to learn more about me please use one of the links below, or just check out my [CV](/ManelaCV.pdf) for more information.
+Although I've had many other jobs and wonderful experiences throughout my career, I now consider myself to be a robotics engineer with a specialization in building machine learning algorithms for custom-built sensors. Ultimately, just like doing cool stuff and always happy to chat! If you want to learn more about me please use one of the links below, or just check out my [CV](/assets/ManelaCV.pdf) for more information.
