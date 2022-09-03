@@ -21,13 +21,13 @@ Continuing that work, I added a camera to the same data collection system in ord
 Following college, I was part of the first intern class at [Uber ATC](https://www.officelovin.com/2017/02/tour-ubers-advanced-technology-center/) (later Uber ATG, and then [bought by Aurora](https://investor.uber.com/news-events/news/press-release-details/2020/Aurora-is-acquiring-Ubers-self-driving-unit-Advanced-Technologies-Group-accelerating-development-of-the-Aurora-Driver/default.aspx)) where we built an end-to-end self-driving system based purely on cameras. Following the internship, I transitioned to full time to continue this work.
 
 
-After some time at Uber, I joined [Argo AI](https://www.argo.ai/) as one of the original employees. Getting back to my camera-lidar roots, I started there by working with our team to develop C++ onboard infrastructure for everything from out monocular object detector to low-level lidar firmware.
+After some time at Uber, I joined [Argo AI](https://www.argo.ai/) as one of the original employees. Getting back to my camera-lidar roots, I started there by working with our team to develop C++ onboard infrastructure for everything from our monocular object detector to low-level lidar firmware.
 
 
 I furthered my mapping work at Argo by working on a team which [patented](https://patents.google.com/patent/US11164369B2/en) a method to develop cm-level precision ground height maps using a [Gaussian Process](http://robotics.caltech.edu/wiki/images/8/8e/GPModelingTerrain.pdf), Poisson Surface Reconstruction, and several other hacks. My role in the project was to implement the Gaussian Process piece of the pipeline using the [GPflow](https://github.com/GPflow/GPflow) package.
 
 
-I then spent a significant amount of my time working with Argo's fantastic [lidar team](https://www.forbes.com/sites/samabuelsamid/2017/10/27/argo-ai-and-ford-double-down-on-lidar-acquire-princeton-lightwave/?sh=6a1555b3410a) to develop algorithms for Argo's custom [Geiger-Mode](https://www.argo.ai/company-news/breakthrough-new-lidar-technology-gives-argo-ai-the-edge-in-autonomous-delivery-and-ride-hail-services/) lidar. Following my infra work, I was promoted and tech-lead a team of engineers to ship Argo's first deep-lidar based object detector. The detector was then deployed in five different cities simultaneously.
+I then spent a significant amount of my time working with Argo's fantastic [lidar team](https://www.forbes.com/sites/samabuelsamid/2017/10/27/argo-ai-and-ford-double-down-on-lidar-acquire-princeton-lightwave/?sh=6a1555b3410a) to develop algorithms for Argo's custom [Geiger-Mode](https://www.argo.ai/company-news/breakthrough-new-lidar-technology-gives-argo-ai-the-edge-in-autonomous-delivery-and-ride-hail-services/) lidar. Following my infra work, I was promoted and became a tech lead to team of engineers to ship Argo's first deep-lidar based object detector. We successfully launched the detector in five different cities simultaneously.
 
 
 ## Stereo
