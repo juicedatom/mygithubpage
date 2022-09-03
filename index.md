@@ -3,7 +3,7 @@ layout: home
 title: Home
 enable_shit: true
 ---
-<img style="float: right;padding:10px" src="/assets/funnyhat.jpg" width="40%">
+<img style="float: right;padding:10px" src="/assets/funnyhat.jpg" width="30%">
 
 In 2016, I graduated with a degree in Computer Engineering from [Michigan Technological University](https://www.mtu.edu/) after years of [robotics research](https://scholar.google.com/citations?user=E0nbCrYAAAAJ&hl=en), internships, and spending time [in nature](https://www.google.com/maps/place/Michigan+Technological+University/@47.0892921,-88.6100291,11.82z/data=!4m5!3m4!1s0x4d50c810d2807581:0x80d7ca9457d61ad5!8m2!3d47.1150259!4d-88.5452004)! Since then, I've been working as an engineer and researcher  changing the way that robots see the world.
 
@@ -27,6 +27,9 @@ After some time at Uber, I joined [Argo AI](https://www.argo.ai/) as one of the 
 I furthered my mapping work at Argo by working on a team which [patented](https://patents.google.com/patent/US11164369B2/en) a method to develop cm-level precision ground height maps using a [Gaussian Process](http://robotics.caltech.edu/wiki/images/8/8e/GPModelingTerrain.pdf), Poisson Surface Reconstruction, and several other hacks. My role in the project was to implement the Gaussian Process piece of the pipeline using the [GPflow](https://github.com/GPflow/GPflow) package.
 
 
+<img style="float: left;padding:10px" src="/assets/argo-lidar.gif" width="40%">
+
+
 I then spent a significant amount of my time working with Argo's fantastic [lidar team](https://www.forbes.com/sites/samabuelsamid/2017/10/27/argo-ai-and-ford-double-down-on-lidar-acquire-princeton-lightwave/?sh=6a1555b3410a) to develop algorithms for Argo's custom [Geiger-Mode](https://www.argo.ai/company-news/breakthrough-new-lidar-technology-gives-argo-ai-the-edge-in-autonomous-delivery-and-ride-hail-services/) lidar. Following my infra work, I was promoted and became a tech lead to team of engineers to ship Argo's first deep-lidar based object detector. We successfully launched the detector in five different cities simultaneously.
 
 
@@ -38,6 +41,10 @@ Towards the end of my time at Argo I was part of a small team which pushed the s
 
 ## Radar
 After a while I transitioned to [Waymo](https://waymo.com/), [formerly the Google Self-Driving Car Project](https://waymo.com/company/), where I use our [imaging radar](https://www.forbes.com/sites/bradtempleton/2021/11/15/waymos-new-imaging-radar-takes-them-through-san-francisco-fog/?sh=d07c3602937f) to build deep radar algorithms for object detection.
+
+
+<img style="float: right;padding:10px" src="/assets/waymo-radar.gif" width="40%">
+
 
 I currently lead the radar-trucking perception working group. The group consists of a cross-functional team of engineers across hardware, software, and systems which work through issues involving our current radar, while pushing on designs for the next generation of hardware.  Our working group has successfully launched several deep-radar based object detectors, field of view, and sensor fusion models into production. Our group has also been able to generalize several of these models across newer radars as they come online.
 
