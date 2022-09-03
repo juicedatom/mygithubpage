@@ -49,5 +49,5 @@ After a while I transitioned to [Waymo](https://waymo.com/), [formerly the Googl
 I currently lead the radar-trucking perception working group. The group consists of a cross-functional team of engineers across hardware, software, and systems which work through issues involving our current radar, while pushing on designs for the next generation of hardware.  Our working group has successfully launched several deep-radar based object detectors, field of view, and sensor fusion models into production. Our group has also been able to generalize several of these models across newer radars as they come online.
 
 
-## In General...
+## In General
 Although I've had many other jobs and wonderful experiences throughout my career, I now consider myself to be a robotics engineer with a specialization in building machine learning algorithms for custom-built sensors. Ultimately, just like doing cool stuff and always happy to chat! If you want to learn more about me please use one of the links below, or just check out my <a class="page-link" href="{{ site.cv_url }}" target="_blank">Resume</a> for more information.
