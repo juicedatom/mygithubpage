@@ -5,6 +5,8 @@ permalink: /portfolio/
 ---
 
 ## Publications
+[Hwang, J. J., Kretzschmar, H., Manela, J., Rafferty, S., Armstrong-Crews, N.: CramNet: Camera-Radar Fusion with Ray-Constrained Cross-Attention for Robust 3D Object Detection. In: ECCV (2022)](https://arxiv.org/pdf/2210.09267.pdf)
+
 [G. Yang, J. Manela, M. Happold, D. Ramanan. Hierarchical Deep Stereo for High Res Imagery. Computer Vision
 and Pattern Recognition Conference 2019 (CVPR)](https://openaccess.thecvf.com/content_CVPR_2019/html/Yang_Hierarchical_Deep_Stereo_Matching_on_High-Resolution_Images_CVPR_2019_paper.html)
 

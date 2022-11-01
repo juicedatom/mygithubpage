@@ -11,7 +11,7 @@ In 2016, I graduated with a degree in Computer Engineering from [Michigan Techno
 For the next couple of paragraphs I'll give an overview on my professional career through the lens of sensor fusion.
 
 
-## Lidars and Monocular Cameras
+## Camera-Lidar Fusion
 While in college, I designed and hand-built a data-collection system which used a Hokuyo lidar like [this one](https://acroname.com/store/lidar-scanner-r314-hokuyo-laser4?gclid=EAIaIQobChMIyZGAsYvr-QIVRjizAB2pqQy3EAQYBiABEgL4LfD_BwE) which was designed to be mounted on a drone. It was used to map bridges in the Metro-Detroit Area like [this one](https://mtri.org/mdot_uav.html) under the guidance of [Dr. Timothy C. Havens](https://www.mtu.edu/cs/department/people/faculty/havens/). Here's a picture of the [drone](https://www.mtu.edu/news/2018/12/leave-nothing-up-in-the-air-bridge-inspections-in-the-age-of-drones.html) with the sensor kit I developed on it.
 
 
@@ -47,6 +47,10 @@ After a while I transitioned to [Waymo](https://waymo.com/), [formerly the Googl
 
 
 I currently lead the radar-trucking perception working group. The group consists of a cross-functional team of engineers across hardware, software, and systems which work through issues involving our current radar, while pushing on designs for the next generation of hardware.  Our working group has successfully launched several deep-radar based object detectors, field of view, and sensor fusion models into production. Our group has also been able to generalize several of these models across newer radars as they come online.
+
+
+## Camera-Radar Fusion
+Throwing together all of my previous work, I was part of publishing [Cramnet](https://arxiv.org/pdf/2210.09267.pdf), a novel camera-radar early fusion object detector at ECCV '22. Our work helped to pave the way for long-range, principled, and efficient camera-radar fusion using dense imagery which is robust to various error modes.
 
 
 ## In General...
