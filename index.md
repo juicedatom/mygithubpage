@@ -50,7 +50,7 @@ I currently lead the radar-trucking perception working group. The group consists
 
 
 ## Camera-Radar Fusion
-Throwing together all of my previous work, I was part of publishing [Cramnet](https://arxiv.org/pdf/2210.09267.pdf), a novel camera-radar early fusion object detector at ECCV '22. Our work helped to pave the way for long-range, principled, and efficient camera-radar fusion using dense imagery which is robust to various error modes.
+Throwing together all of my previous work, I was part of publishing [CramNet](https://arxiv.org/pdf/2210.09267.pdf), a novel camera-radar early fusion object detector at ECCV '22. Our work helped to pave the way for long-range, principled, and efficient camera-radar fusion using dense imagery which is robust to various error modes.
 
 
 ## In General...
