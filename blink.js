@@ -1,3 +1,5 @@
+// This file contains the code to create the blinking text effect on the
+// header of the webpage.
 function stepping_text(names, time_to_wait_ms, object_to_modify)
 {
     var index = 0;
