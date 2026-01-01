@@ -5,17 +5,17 @@ enable_shit: true
 ---
 <img style="float: right;padding:10px" src="/assets/funnyhat.jpg" width="30%">
 
-In 2016, I graduated with a degree in Computer Engineering from [Michigan Technological University](https://www.mtu.edu/) after years of [robotics research](https://scholar.google.com/citations?user=E0nbCrYAAAAJ&hl=en), internships, and spending time [in nature](https://www.google.com/maps/place/Michigan+Technological+University/@47.0892921,-88.6100291,11.82z/data=!4m5!3m4!1s0x4d50c810d2807581:0x80d7ca9457d61ad5!8m2!3d47.1150259!4d-88.5452004)! Since then, I've been working as an engineer and researcher  changing the way that robots see the world.
+In 2016, I graduated with a degree in Computer Engineering from [Michigan Technological University](https://www.mtu.edu/) after years of [robotics research](https://scholar.google.com/citations?user=E0nbCrYAAAAJ&hl=en), internships, and exploring [the Upper Peninsula](https://www.google.com/maps/place/Michigan+Technological+University/@47.0892921,-88.6100291,11.82z/data=!4m5!3m4!1s0x4d50c810d2807581:0x80d7ca9457d61ad5!8m2!3d47.1150259!4d-88.5452004). Since then, I have been working as an engineer and researcher advancing robotic perception systems.
 
 
-For the next couple of paragraphs I'll give an overview on my professional career through the lens of sensor fusion.
+The following sections provide an overview of my professional career through the lens of sensor fusion.
 
 
 ## Camera-Lidar Fusion
-While in college, I designed and hand-built a data-collection system which used a Hokuyo lidar like [this one](https://acroname.com/store/lidar-scanner-r314-hokuyo-laser4?gclid=EAIaIQobChMIyZGAsYvr-QIVRjizAB2pqQy3EAQYBiABEgL4LfD_BwE) which was designed to be mounted on a drone. It was used to map bridges in the Metro-Detroit Area like [this one](https://mtri.org/mdot_uav.html) under the guidance of [Dr. Timothy C. Havens](https://www.mtu.edu/cs/department/people/faculty/havens/). Here's a picture of the [drone](https://www.mtu.edu/news/2018/12/leave-nothing-up-in-the-air-bridge-inspections-in-the-age-of-drones.html) with the sensor kit I developed on it.
+While in college, I designed and hand-built a data-collection system which used a Hokuyo lidar like [this one](https://acroname.com/store/lidar-scanner-r314-hokuyo-laser4?gclid=EAIaIQobChMIyZGAsYvr-QIVRjizAB2pqQy3EAQYBiABEgL4LfD_BwE) which was designed to be mounted on a drone. It was used to map bridges in the Metro-Detroit Area like [this one](https://mtri.org/mdot_uav.html) under the guidance of [Dr. Timothy C. Havens](https://www.mtu.edu/cs/department/people/faculty/havens/). The [drone](https://www.mtu.edu/news/2018/12/leave-nothing-up-in-the-air-bridge-inspections-in-the-age-of-drones.html) was equipped with the sensor kit I developed.
 
 
-Continuing that work, I added a camera to the same data collection system in order to help our lab test a [camera-lidar](https://asmedigitalcollection.asme.org/dynamicsystems/article-abstract/139/7/071002/395297/Heterogeneous-Multisensor-Fusion-for-Mobile) sensor fusion system for pose estimation. Here's a [picture of it, but it's from 2014, so I look very different.](https://www.flickr.com/photos/michigantechcoe/14477329427)
+Continuing that work, I added a camera to the same data collection system in order to help our lab test a [camera-lidar](https://asmedigitalcollection.asme.org/dynamicsystems/article-abstract/139/7/071002/395297/Heterogeneous-Multisensor-Fusion-for-Mobile) sensor fusion system for pose estimation. Additional documentation and imagery from this project can be found [here](https://www.flickr.com/photos/michigantechcoe/14477329427).
 
 
 Following college, I was part of the first intern class at [Uber ATC](https://www.officelovin.com/2017/02/tour-ubers-advanced-technology-center/) (later Uber ATG, and then [bought by Aurora](https://investor.uber.com/news-events/news/press-release-details/2020/Aurora-is-acquiring-Ubers-self-driving-unit-Advanced-Technologies-Group-accelerating-development-of-the-Aurora-Driver/default.aspx)) where we built an end-to-end self-driving system based purely on cameras. Following the internship, I transitioned to full time to continue this work.
@@ -34,9 +34,9 @@ I then spent a significant amount of my time working with Argo's fantastic [lida
 
 
 ## Stereo
-Towards the end of my time at Argo I was part of a small team which pushed the state-of-the-art in field of stereo depth estimation by developing a novel approach for deep stereo vision on high-resolution images in real-time. Our work was then published at [CVPR in 2019](https://openaccess.thecvf.com/content_CVPR_2019/papers/Yang_Hierarchical_Deep_Stereo_Matching_on_High-Resolution_Images_CVPR_2019_paper.pdf).
+Towards the end of my time at Argo I was part of a small team which pushed the state-of-the-art in the field of stereo depth estimation by developing a novel approach for deep stereo vision on high-resolution images in real-time. Our work was published at [CVPR in 2019](https://openaccess.thecvf.com/content_CVPR_2019/papers/Yang_Hierarchical_Deep_Stereo_Matching_on_High-Resolution_Images_CVPR_2019_paper.pdf).
 
- In addition to my algorithmic work on stereo, I also modified the auto-exposure for our cameras so that the stereo pair would expose at the same time. This was needed to for high-quality stereo correspondences.
+ In addition to my algorithmic work on stereo, I also modified the auto-exposure for our cameras so that the stereo pair would expose at the same time. This was needed for high-quality stereo correspondences.
 
 
 ## Radar
@@ -54,4 +54,4 @@ Throwing together all of my previous work, I was part of publishing [CramNet](ht
 
 
 ## In General...
-Although I've had many other jobs and wonderful experiences throughout my career, I now consider myself to be a robotics engineer with a specialization in building machine learning algorithms for custom-built sensors. Ultimately, just like doing cool stuff and always happy to chat! If you want to learn more about me please use one of the links below, or just check out my <a class="page-link" href="{{ site.cv_url }}" target="_blank">Resume</a> for more information.
+Throughout my career, I have gained diverse experience across multiple organizations and domains. I consider myself to be a robotics engineer with a specialization in building machine learning algorithms for custom-built sensors. I am passionate about advancing perception technology and welcome opportunities to discuss research and collaboration. For more information about my background and experience, please refer to the links below or view my <a class="page-link" href="{{ site.cv_url }}" target="_blank">Resume</a>.
