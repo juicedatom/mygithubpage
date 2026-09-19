@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+#
+# Remove build output and caches. Reach for this when a change isn't showing up
+# in the preview — the incremental cache is the usual culprit.
+#
+#   scripts/clean          # _site/ and .jekyll-cache/
+#   scripts/clean --all    # the above plus vendor/bundle and Gemfile.lock
+
+source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/lib/common.sh"
+
+rm -rf _site .jekyll-cache .sass-cache
+ok "removed _site/, .jekyll-cache/, .sass-cache/"
+
+if [ "${1:-}" = "--all" ]; then
+  rm -rf vendor/bundle Gemfile.lock
+  ok "removed vendor/bundle and Gemfile.lock — run scripts/bootstrap to reinstall"
+fi

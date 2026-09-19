@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+#
+# One-time setup: install ruby for this platform, then install the gems into
+# vendor/bundle (kept out of git, so nothing is written to system gem dirs).
+#
+#   scripts/bootstrap
+
+source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/lib/common.sh"
+
+info "platform: $(platform)"
+"$SCRIPTS_DIR/$(platform)/bootstrap"
+
+load_platform_env
+
+if ! command -v bundle >/dev/null 2>&1; then
+  info "gem install bundler"
+  gem install bundler --no-document
+fi
+ok "bundler $(bundle --version | awk '{print $NF}')"
+
+info "bundle install (into vendor/bundle)"
+bundle config set --local path vendor/bundle
+bundle install --jobs 4
+
+ok "ready. Next: scripts/server"

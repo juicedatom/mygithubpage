@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+#
+# What CI runs: a production build plus the sanity checks that catch a site
+# which "builds" but publishes nothing useful.
+#
+#   scripts/cibuild
+
+source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/lib/common.sh"
+load_platform_env
+require_bundle
+
+"$SCRIPTS_DIR/build" --prod
+
+for required in _site/index.html _site/404.html _site/assets/css/style.css _site/CNAME; do
+  [ -f "$required" ] || die "$required missing from the build output"
+  ok "$required"
+done
+
+# An index.html that renders to nothing still counts as a successful build.
+if [ "$(wc -c < _site/index.html)" -lt 500 ]; then
+  die "_site/index.html is suspiciously small ($(wc -c < _site/index.html) bytes)"
+fi
+
+ok "it builds!"

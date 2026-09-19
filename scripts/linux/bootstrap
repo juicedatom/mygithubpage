@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+#
+# Installs the Linux toolchain needed to build the site: Ruby plus the headers
+# the native gems (ffi, nokogiri, sass-embedded) compile against.
+# Called by scripts/bootstrap; safe to run directly and safe to re-run.
+
+source "$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/lib/common.sh"
+load_platform_env
+
+if ruby_is_supported; then
+  ok "ruby $(ruby_version) at $(command -v ruby)"
+  exit 0
+fi
+
+info "ruby $(ruby_version) is too old or missing (need >= $MIN_RUBY_MAJOR.$MIN_RUBY_MINOR)"
+
+sudo_if_needed() {
+  if [ "$(id -u)" -eq 0 ]; then "$@"; else sudo "$@"; fi
+}
+
+if command -v apt-get >/dev/null 2>&1; then
+  info "apt-get install ruby-full build-essential zlib1g-dev"
+  sudo_if_needed apt-get update
+  sudo_if_needed apt-get install -y ruby-full build-essential zlib1g-dev
+elif command -v dnf >/dev/null 2>&1; then
+  info "dnf install ruby ruby-devel @development-tools zlib-devel"
+  sudo_if_needed dnf install -y ruby ruby-devel zlib-devel
+  sudo_if_needed dnf group install -y development-tools || true
+elif command -v pacman >/dev/null 2>&1; then
+  info "pacman -S ruby base-devel"
+  sudo_if_needed pacman -S --needed --noconfirm ruby base-devel
+elif command -v zypper >/dev/null 2>&1; then
+  info "zypper install ruby ruby-devel"
+  sudo_if_needed zypper install -y ruby ruby-devel gcc make zlib-devel
+else
+  die "no supported package manager found (apt-get, dnf, pacman, zypper). Install ruby >= $MIN_RUBY_MAJOR.$MIN_RUBY_MINOR manually, or use rbenv: https://github.com/rbenv/rbenv"
+fi
+
+load_platform_env
+
+ruby_is_supported || die "distro ruby is still '$(ruby_version)'. Use rbenv to install a newer one: https://github.com/rbenv/rbenv"
+ok "ruby $(ruby_version) at $(command -v ruby)"

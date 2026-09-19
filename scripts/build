@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+#
+# Build the site into _site/.
+#
+#   scripts/build           # development build
+#   scripts/build --prod    # production build — what GitHub Pages actually publishes
+#   scripts/build --verbose # include every Sass/Liquid warning
+#
+# Anything else is passed through to `jekyll build`.
+
+source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/lib/common.sh"
+load_platform_env
+require_bundle
+
+JEKYLL_ENV="${JEKYLL_ENV:-development}"
+ARGS=()
+
+for arg in "$@"; do
+  case "$arg" in
+    --prod|--production) JEKYLL_ENV=production ;;
+    *) ARGS+=("$arg") ;;
+  esac
+done
+
+export JEKYLL_ENV
+
+info "jekyll build (JEKYLL_ENV=$JEKYLL_ENV)"
+bundle exec jekyll build --trace "${ARGS[@]+"${ARGS[@]}"}"
+
+ok "_site/ built — $(find _site -type f | wc -l | tr -d ' ') files, $(du -sh _site | cut -f1)"

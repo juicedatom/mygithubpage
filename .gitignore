@@ -2,3 +2,7 @@
 _site/
 .sass-cache/
 Gemfile.lock
+
+# scripts/bootstrap installs gems here instead of into system gem dirs
+.bundle/
+vendor/
