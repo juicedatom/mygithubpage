@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+#
+# Build the site and check every link, image and script reference in it.
+#
+#   scripts/check-links              # internal links, images, scripts only (fast, offline)
+#   scripts/check-links --external   # also follow external URLs (slow, needs network)
+#
+# Uses html-proofer against _site/, which is exactly what GitHub Pages serves.
+
+source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/lib/common.sh"
+load_platform_env
+require_bundle
+
+CHECK_EXTERNAL=false
+for arg in "$@"; do
+  case "$arg" in
+    --external) CHECK_EXTERNAL=true ;;
+    *) die "unknown option: $arg" ;;
+  esac
+done
+
+if ! bundle exec ruby -e 'require "html_proofer"' >/dev/null 2>&1; then
+  die "html-proofer is not installed. Run scripts/bootstrap (it is in the Gemfile's :development group)."
+fi
+
+info "building for link check (JEKYLL_ENV=production)"
+JEKYLL_ENV=production bundle exec jekyll build --quiet
+
+info "checking links in _site (external: $CHECK_EXTERNAL)"
+
+bundle exec ruby -e '
+  require "html_proofer"
+
+  HTMLProofer.check_directory("_site",
+    disable_external:  ENV["CHECK_EXTERNAL"] != "true",
+    enforce_https:     false,
+    ignore_status_codes: [999],          # LinkedIn returns 999 to non-browsers
+    swap_urls:         { %r{^/} => "/" },
+    ignore_urls:       [%r{^mailto:}],
+    log_level:         :info,
+  ).run
+' CHECK_EXTERNAL="$CHECK_EXTERNAL" && ok "all links resolve"

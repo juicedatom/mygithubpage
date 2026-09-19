@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+#
+# Installs the macOS toolchain needed to build the site: a modern Ruby.
+# Called by scripts/bootstrap; safe to run directly and safe to re-run.
+
+source "$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/lib/common.sh"
+load_platform_env
+
+if ruby_is_supported; then
+  ok "ruby $(ruby_version) at $(command -v ruby)"
+  exit 0
+fi
+
+info "ruby $(ruby_version) is too old (need >= $MIN_RUBY_MAJOR.$MIN_RUBY_MINOR); macOS system ruby cannot build Jekyll's native gems"
+
+if ! command -v brew >/dev/null 2>&1; then
+  die "Homebrew not found. Install it from https://brew.sh, then re-run scripts/bootstrap."
+fi
+
+info "brew install ruby"
+brew install ruby
+
+# env.sh only picks up the Homebrew ruby once it exists, so re-source.
+load_platform_env
+
+ruby_is_supported || die "still on ruby '$(ruby_version)' after installing. Add '$BREW_PREFIX/opt/ruby/bin' to your PATH and re-run."
+ok "ruby $(ruby_version) at $(command -v ruby)"
+
+cat <<EOF
+
+  ${C_DIM}The scripts in scripts/ put Homebrew's ruby on PATH themselves, so
+  nothing else is required. To use it in your own shell as well, add:
+
+      export PATH="$BREW_PREFIX/opt/ruby/bin:\$PATH"
+
+  to ~/.zshrc.${C_RESET}
+EOF

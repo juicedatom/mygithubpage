@@ -1,0 +1,205 @@
+#!/usr/bin/env bash
+#
+# Diagnose why the site isn't building or isn't looking right. Runs every check
+# and reports at the end rather than stopping at the first problem.
+#
+#   scripts/doctor
+
+source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/lib/common.sh"
+set +e   # this script reports failures, it does not abort on them
+
+PROBLEMS=0
+note_fail() { fail "$*"; PROBLEMS=$((PROBLEMS + 1)); }
+
+# ------------------------------------------------------------ toolchain ----
+
+info "toolchain"
+
+load_platform_env
+echo "      platform: $(platform) ($(uname -m))"
+
+if command -v ruby >/dev/null 2>&1; then
+  if ruby_is_supported; then
+    ok "ruby $(ruby_version)  $(command -v ruby)"
+  else
+    note_fail "ruby $(ruby_version) at $(command -v ruby) is older than $MIN_RUBY_MAJOR.$MIN_RUBY_MINOR — run scripts/bootstrap"
+  fi
+else
+  note_fail "no ruby on PATH — run scripts/bootstrap"
+fi
+
+if command -v bundle >/dev/null 2>&1; then
+  ok "bundler $(bundle --version 2>/dev/null | awk '{print $NF}')"
+else
+  note_fail "no bundler on PATH — run scripts/bootstrap"
+fi
+
+if bundle check >/dev/null 2>&1; then
+  ok "gems installed ($(bundle list 2>/dev/null | grep -c '^  \*') gems)"
+  echo "      jekyll $(bundle exec jekyll --version 2>/dev/null | awk '{print $2}')"
+else
+  note_fail "gems missing or out of date — run scripts/bootstrap"
+  dim "      $(bundle check 2>&1 | head -3)"
+fi
+
+# --------------------------------------------------------------- config ----
+
+info "configuration"
+
+if [ -f _config.yml ]; then
+  if ruby -ryaml -e 'YAML.unsafe_load_file("_config.yml")' >/dev/null 2>&1; then
+    ok "_config.yml parses"
+  else
+    note_fail "_config.yml is not valid YAML"
+    dim "      $(ruby -ryaml -e 'YAML.unsafe_load_file("_config.yml")' 2>&1 | head -3)"
+  fi
+else
+  note_fail "no _config.yml"
+fi
+
+# GitHub Pages serves a custom domain from CNAME; a mismatched `url` in
+# _config.yml is the usual cause of broken absolute links and a broken feed.
+if [ -f CNAME ]; then
+  DOMAIN="$(tr -d '[:space:]' < CNAME)"
+  ok "CNAME -> $DOMAIN"
+  CONFIG_URL="$(ruby -ryaml -e 'c = YAML.unsafe_load_file("_config.yml") || {}; print c["url"].to_s' 2>/dev/null)"
+  if [ -z "$CONFIG_URL" ]; then
+    warn "_config.yml has no 'url:' — jekyll-seo-tag and jekyll-feed will emit relative/incorrect absolute URLs"
+    dim "      add:  url: \"https://$DOMAIN\""
+  elif [ "$CONFIG_URL" != "https://$DOMAIN" ] && [ "$CONFIG_URL" != "http://$DOMAIN" ]; then
+    warn "_config.yml url ($CONFIG_URL) does not match CNAME ($DOMAIN)"
+  else
+    ok "url matches CNAME"
+  fi
+fi
+
+# Assets referenced from config must exist or the link 404s silently.
+CV_URL="$(ruby -ryaml -e 'c = YAML.unsafe_load_file("_config.yml") || {}; print c["cv_url"].to_s' 2>/dev/null)"
+if [ -n "$CV_URL" ]; then
+  if [ -f ".${CV_URL}" ]; then
+    ok "cv_url -> .${CV_URL} exists"
+  else
+    note_fail "cv_url points at ${CV_URL} but .${CV_URL} does not exist"
+  fi
+fi
+
+# Every page listed in header_pages has to be a real file, or the nav drops it.
+# Collected into a variable first so the failures land in this shell's counter
+# rather than in a pipeline subshell.
+MISSING_PAGES="$(ruby -ryaml -e '
+  c = YAML.unsafe_load_file("_config.yml") || {}
+  Array(c["header_pages"]).each { |p| puts p unless File.exist?(p) }
+' 2>/dev/null)"
+if [ -n "$MISSING_PAGES" ]; then
+  while IFS= read -r missing; do
+    note_fail "header_pages lists '$missing', which does not exist"
+  done <<< "$MISSING_PAGES"
+else
+  ok "header_pages all exist"
+fi
+
+# Top-level pages need front matter or Jekyll copies them through unrendered.
+for f in *.md *.html; do
+  [ -e "$f" ] || continue
+  [ "$f" = "README.md" ] && continue
+  if [ "$(head -1 "$f")" != "---" ]; then
+    warn "$f has no YAML front matter — Jekyll will not render it (no layout, no Liquid)"
+  fi
+done
+
+# ------------------------------------------------------------ jekyll dr ----
+
+info "jekyll doctor"
+if bundle check >/dev/null 2>&1; then
+  DOCTOR_OUT="$(bundle exec jekyll doctor 2>&1)"
+  if [ $? -eq 0 ]; then
+    echo "$DOCTOR_OUT" | sed 's/^/      /'
+  else
+    note_fail "jekyll doctor reported problems"
+    echo "$DOCTOR_OUT" | sed 's/^/      /'
+  fi
+else
+  dim "      skipped (gems not installed)"
+fi
+
+# ---------------------------------------------------------------- build ----
+
+info "production build"
+if bundle check >/dev/null 2>&1; then
+  BUILD_LOG="$(mktemp -t jekyll-doctor)"
+  if JEKYLL_ENV=production bundle exec jekyll build --trace >"$BUILD_LOG" 2>&1; then
+    ok "builds clean"
+
+    for required in _site/index.html _site/404.html _site/assets/css/style.css; do
+      if [ -f "$required" ]; then
+        ok "$required"
+      else
+        note_fail "$required missing from the build output"
+      fi
+    done
+    [ -f _site/feed.xml ] && ok "_site/feed.xml (jekyll-feed)" || warn "_site/feed.xml missing (jekyll-feed not running?)"
+    [ -f _site/CNAME ] && ok "_site/CNAME preserved" || warn "_site/CNAME missing — a custom domain will be dropped on deploy"
+
+    # Liquid failures don't fail the build; they leave the tag empty or dump
+    # the error into the HTML, so grep the output for the giveaways.
+    if grep -rlq "Liquid Exception\|Liquid Warning\|{{ \|{% " _site --include='*.html' 2>/dev/null; then
+      warn "unrendered Liquid or Liquid errors found in _site:"
+      grep -rn "Liquid Exception\|Liquid Warning\|{{ \|{% " _site --include='*.html' 2>/dev/null | head -5 | sed 's/^/      /'
+    else
+      ok "no unrendered Liquid in output"
+    fi
+
+    SASS_WARNINGS="$(grep -c 'DEPRECATION WARNING' "$BUILD_LOG" 2>/dev/null || echo 0)"
+    [ "$SASS_WARNINGS" -gt 0 ] && warn "$SASS_WARNINGS Sass deprecation warnings (see scripts/build --verbose)"
+  else
+    note_fail "production build failed"
+    tail -25 "$BUILD_LOG" | sed 's/^/      /'
+  fi
+  rm -f "$BUILD_LOG"
+else
+  dim "      skipped (gems not installed)"
+fi
+
+# ------------------------------------------------------------ deploy ------
+
+info "git / github pages"
+
+BRANCH="$(git rev-parse --abbrev-ref HEAD 2>/dev/null)"
+echo "      branch: $BRANCH"
+if [ -n "$(git status --porcelain 2>/dev/null)" ]; then
+  warn "working tree has uncommitted changes — they are not on the published site"
+  git status --short | head -10 | sed 's/^/      /'
+fi
+
+if ! command -v gh >/dev/null 2>&1; then
+  dim "      gh not installed — skipping remote Pages status (brew install gh)"
+elif ! gh auth status >/dev/null 2>&1; then
+  warn "gh is installed but not authenticated — run 'gh auth login' to check the live Pages build status"
+else
+  REPO="$(gh repo view --json nameWithOwner -q .nameWithOwner 2>/dev/null)"
+  if [ -n "$REPO" ]; then
+    PAGES="$(gh api "repos/$REPO/pages" 2>/dev/null)"
+    if [ -n "$PAGES" ]; then
+      echo "      pages source: $(echo "$PAGES" | ruby -rjson -e 'j=JSON.parse(STDIN.read); print "#{j.dig("source","branch")}#{j.dig("source","path")}"' 2>/dev/null)"
+      echo "      pages url:    $(echo "$PAGES" | ruby -rjson -e 'print JSON.parse(STDIN.read)["html_url"]' 2>/dev/null)"
+      STATUS="$(echo "$PAGES" | ruby -rjson -e 'print JSON.parse(STDIN.read)["status"].to_s' 2>/dev/null)"
+      case "$STATUS" in
+        built) ok "last Pages build: built" ;;
+        errored) note_fail "last Pages build errored — see https://github.com/$REPO/deployments" ;;
+        *) echo "      last Pages build: ${STATUS:-unknown}" ;;
+      esac
+    else
+      dim "      no Pages API access for $REPO"
+    fi
+  fi
+fi
+
+# --------------------------------------------------------------- report ----
+
+echo
+if [ "$PROBLEMS" -eq 0 ]; then
+  ok "no problems found"
+else
+  fail "$PROBLEMS problem(s) found"
+  exit 1
+fi

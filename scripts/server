@@ -1,3 +1,47 @@
-#!/bin/sh
+#!/usr/bin/env bash
+#
+# Local preview server with live reload.
+#
+#   scripts/server                 # http://localhost:4000, live reload, opens browser
+#   PORT=4001 scripts/server       # different port
+#   scripts/server --no-open       # don't open a browser
+#   scripts/server --prod          # build as JEKYLL_ENV=production (what Pages does)
+#   scripts/server --verbose       # full Jekyll + Sass output
+#
+# Anything else is passed straight through to `jekyll serve`.
 
-bundle exec jekyll serve
+source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/lib/common.sh"
+load_platform_env
+require_bundle
+
+OPEN_BROWSER=1
+JEKYLL_ENV="${JEKYLL_ENV:-development}"
+ARGS=()
+
+for arg in "$@"; do
+  case "$arg" in
+    --no-open) OPEN_BROWSER=0 ;;
+    --prod|--production) JEKYLL_ENV=production ;;
+    *) ARGS+=("$arg") ;;
+  esac
+done
+
+export JEKYLL_ENV
+
+info "serving on http://localhost:$PORT  (JEKYLL_ENV=$JEKYLL_ENV)"
+dim "  drafts and future-dated posts are included; edits rebuild and reload automatically"
+dim "  Ctrl-C to stop"
+
+if [ "$OPEN_BROWSER" -eq 1 ] && command -v "$OPEN_CMD" >/dev/null 2>&1; then
+  # Give Jekyll a moment to bind the port before the browser hits it.
+  ( sleep 3; "$OPEN_CMD" "http://localhost:$PORT" >/dev/null 2>&1 || true ) &
+fi
+
+exec bundle exec jekyll serve \
+  --port "$PORT" \
+  --livereload \
+  --drafts \
+  --future \
+  --unpublished \
+  --trace \
+  "${ARGS[@]+"${ARGS[@]}"}"
